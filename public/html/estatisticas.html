@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KPIs - Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="../css/estatisticas.css" />
+</head>
+
+<body>
+
+  <!-- Cabeçalho com botão de menu -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+      <!-- Botão menu -->
+      <button class="btn btn-light me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- Nome/logo -->
+      <a class="navbar-brand" href="#">Chatbot Omega</a>
+
+      <!-- Ícone de perfil -->
+      <div class="ms-auto">
+        <a href="#" class="nav-profile">
+          <i class="fas fa-user-circle"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Menu lateral -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">Menu</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="list-unstyled" id="menuLista">
+        <li><a href="home_page.html">🏠 Início</a></li>
+        <!--<li><a href="gerenciamento_adm.html">🧑‍💼 Gerenciamento de Usuários</a></li> -->
+        <li><a href="chamado.html">📋 Chamados</a></li>
+        <li class="active"><a href="estatisticas.html">📊 Estatísticas</a></li>
+        <li><a href="configuracao.html">⚙️ Configurações</a></li>
+        <li><a href="chat.html">📞 Atendimentos</a></li>
+        <li><a href="fale_conosco.html">💬 Fale conosco</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Espaço do conteúdo -->
+  <div class="content mt-5 pt-4">
+    <h2>Dashboard de Estatísticas</h2>
+    <p>Acompanhe os indicadores principais do seu negócio</p>
+
+    <!-- Stats -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-user-check"></i></div>
+        <div class="stat-number" id="totalclientes">…</div>
+        <div class="stat-label">Clientes Ativos</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+        <div class="stat-number" id="taxaresolucao">…</div>
+        <div class="stat-label">Taxa de Resolução</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-headset"></i></div>
+        <div class="stat-number" id="chamadosabertos">…</div>
+        <div class="stat-label">Chamados Abertos</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-clock"></i></div>
+        <div class="stat-number" id="tempomedio">…</div>
+        <div class="stat-label">Tempo Médio de Resolução</div>
+      </div>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="section-title">
+      <h3>Análise de Desempenho</h3>
+      <p>Visualize os principais indicadores em gráficos</p>
+    </div>
+
+    <div class="charts-section">
+      <!-- Chamados por Status -->
+      <div class="chart-card">
+        <h4>📊 Chamados por Status</h4>
+        <div class="chart-container">
+          <canvas id="chartStatus"></canvas>
+        </div>
+      </div>
+
+      <!-- Satisfação do Cliente — placeholder (sem dados reais ainda) -->
+      <div class="chart-card">
+        <h4>😊 Satisfação do Cliente</h4>
+        <div class="chart-container">
+          <canvas id="chartSatisfacao"></canvas>
+        </div>
+      </div>
+
+      <!-- Distribuição de Prioridades -->
+      <div class="chart-card">
+        <h4>⚡ Distribuição de Prioridades</h4>
+        <div class="chart-container">
+          <canvas id="chartPrioridade"></canvas>
+        </div>
+      </div>
+
+      <!-- Tickets por Mês -->
+      <div class="chart-card">
+        <h4>📅 Tickets Abertos por Mês</h4>
+        <div class="chart-container">
+          <canvas id="chartTempo"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Insights Section -->
+    <div class="section-title">
+      <h3>💡 Principais Insights</h3>
+      <p>Análise e recomendações baseadas nos dados reais</p>
+    </div>
+
+    <div class="insights-section">
+      <div class="insight-card">
+        <div class="insight-icon">📈</div>
+        <h5>Clientes Ativos</h5>
+        <p>Total de clientes distintos cadastrados na plataforma.</p>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-icon">⚡</div>
+        <h5>Eficiência em Resolução</h5>
+        <p id="insightResolucao">Carregando…</p>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-icon">⏱️</div>
+        <h5>Tempo Médio de Resolução</h5>
+        <p id="insightTempo">Carregando…</p>
+      </div>
+    </div>
+  </div><!-- fecha content -->
+
+  <!-- Rodapé -->
+  <footer>
+    <p>© 2025 Chatbot Omega - Todos os direitos reservados</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/estatisticas.js"></script>
+
+  <script>
+    // Gráfico de Satisfação — placeholder (sem dados reais ainda)
+    const ctxSatisfacao = document.getElementById('chartSatisfacao').getContext('2d');
+    new Chart(ctxSatisfacao, {
+      type: 'bar',
+      data: {
+        labels: ['Excelente', 'Bom', 'Neutro', 'Ruim'],
+        datasets: [{
+          label: 'Quantidade',
+          data: [0, 0, 0, 0],
+          backgroundColor: ['#34d399', '#60a5fa', '#fbbf24', '#ef4444'],
+          borderRadius: 8
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: 'Dados de satisfação em breve',
+            color: '#94a3b8',
+            font: { size: 13 }
+          }
+        },
+        scales: { x: { beginAtZero: true } }
+      }
+    });
+  </script>
+
+</body>
+
+</html>

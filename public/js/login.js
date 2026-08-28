@@ -1,0 +1,52 @@
+document.getElementById('formLogin').addEventListener('submit', async function (event) {
+    event.preventDefault();
+
+    const email = document.getElementById('email').value.trim();
+    const senha = document.getElementById('senha').value.trim();
+    const mensagemErro = document.getElementById('mensagemErro');
+
+    if (email === '' || senha === '') {
+        mensagemErro.textContent = 'Por favor, preencha todos os campos.';
+        return;
+    }
+
+    try {
+        const response = await fetch('http://localhost:3000/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, senha })
+        });
+
+        const resultado = await response.json();
+
+        if (response.ok) {
+
+            let isAdmin = false
+
+            sessionStorage.setItem('lojas', JSON.stringify(resultado.lojas));
+
+            const idsLojas = resultado.lojas.map(l => l.id_loja);
+            sessionStorage.setItem('ids_lojas', JSON.stringify(idsLojas));
+
+            const isAdminStr = resultado.perfil;
+
+            isAdmin = isAdminStr == 'admin' ? true : false;
+
+
+            sessionStorage.setItem('is_admin', JSON.stringify(isAdmin));
+            sessionStorage.setItem('id_empresa', resultado.id_empresa);
+            sessionStorage.setItem('id_usuario', resultado.id_usuario);
+
+            window.location.href = '../html/home_page.html';
+
+        } else if (response.status === 401) {
+            mensagemErro.textContent = resultado.mensagem || 'Email ou senha inválidos.'
+        }
+
+    } catch (erro) {
+        console.error('Erro ao tentar logar:', erro);
+        mensagemErro.textContent = 'Erro ao conectar com o servidor.';
+    }
+});

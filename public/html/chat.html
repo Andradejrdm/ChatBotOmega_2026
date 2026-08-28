@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chat de Suporte - Chatbot Omega</title>
+
+  <!-- Bootstrap, Font Awesome e Google Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/chat.css">
+
+</head>
+
+<body>
+
+  <!-- Cabeçalho com botão -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+      <!-- Botão menu -->
+      <button class="btn btn-light me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- LOGO -->
+      <a class="navbar-brand" href="#">Chatbot Omega</a>
+
+      <!-- ICON DO PERFIL -->
+      <div class="ms-auto">
+        <a href="#" class="nav-profile">
+          <i class="fas fa-user-circle"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Menu lateral -->
+
+  <!-- Menu lateral -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">Menu</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="list-unstyled" id="menuLista">
+        <li class="active"><a href="home_page.html">🏠 Início</a></li>
+        <!--<li><a href="gerenciamento_adm.html">🧑‍💼 Gerenciamento de Usuários</a></li> -->
+        <li><a href="chamado.html">📋 Chamados</a></li>
+        <li><a href="estatisticas.html">📊 Estatísticas</a></li>
+        <li><a href="configuracao.html">⚙️ Configurações</a></li>
+        <li><a href="chat.html">📞 Atendimentos</a></li>
+        <li><a href="fale_conosco.html">💬 Fale conosco</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== LAYOUT PRINCIPAL ===== -->
+  <div class="chat-layout">
+
+    <!-- ===== SIDEBAR ESQUERDA - LISTA DE TICKETS ===== -->
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <h3 class="sidebar-title">Histórico de Tickets</h3>
+      </div>
+      <div class="tickets-list"></div>
+    </div>
+
+    <!-- ===== ÁREA DO CHAT (coluna direita) ===== -->
+    <div class="chat-area">
+
+      <!-- HEADER DO CHAT -->
+      <div class="chat-header">
+        <div class="ticket-info">
+          <h2 id="chatHeaderTitle">Selecione um ticket</h2>
+          <p class="ticket-meta" id="chatHeaderMeta">Clique em um ticket na lista ao lado para carregar a conversa</p>
+        </div>
+        <div class="ticket-actions">
+          <button class="btn-action" title="Status" style="background: #dbeafe; color: #1e40af;">
+            <i class="fas fa-tag"></i>
+          </button>
+          <button class="btn-action" title="Prioridade" style="background: #fef3c7; color: #92400e;">
+            <i class="fas fa-exclamation-circle"></i>
+          </button>
+          <button class="btn-action" title="Mais">
+            <i class="fas fa-ellipsis-v"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- MENSAGENS DO CHAT -->
+      <div class="chat-messages" id="chatMessages">
+        <p style="text-align:center;color:#aaa;margin-top:3rem;">
+          Nenhum ticket selecionado.
+        </p>
+      </div>
+
+      <!-- INPUT DE MENSAGEM -->
+      <div class="chat-input-area">
+        <div class="input-wrapper">
+          <textarea class="chat-input" id="messageInput" placeholder="Digite sua resposta..." rows="1"></textarea>
+        </div>
+        <button class="btn-send" id="sendButton" onclick="sendMessage()">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+
+    </div><!-- /chat-area -->
+
+  </div><!-- /chat-layout -->
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>© 2025 Chatbot Omega - Todos os direitos reservados</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/chat.js"></script>
+
+</body>
+
+</html>
