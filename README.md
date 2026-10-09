@@ -48,13 +48,13 @@ USCS-Chatbot_Omega/
 
 ## 👥 Integrantes do Grupo
 
-- **Gabriel Cesar Soares Martine** (RA: 8160085)
-- **Giovana Honório Zakaluk** (RA: 8161876)
-- **Lucas de Andrade Jardim** (RA: 8124661)
-- **Igor Silva** (RA: 8152698)
-- **João Victor Gomes** (RA: 8159415)
-- **Michel Douglas Cardoso** (RA: 8157129)
-- **Vinicius Dias** (RA: 8156975)
+- **Gabriel Cesar Soares Martine**
+- **Giovana Honório Zakaluk**
+- **Lucas de Andrade Jardim**
+- **Igor Silva**
+- **João Victor Gomes**
+- **Michel Douglas Cardoso**
+- **Vinicius Dias**
 
 ---
 
@@ -63,6 +63,29 @@ USCS-Chatbot_Omega/
 ```text
 DB_HOST= xxxxx
 DB_PORT= xxxxx
+
+---
+
+## 🎓 Contexto acadêmico
+
+Projeto desenvolvido em equipe como parte do Projeto Integrado Multidisciplinar (PIM IV) da USCS.
+
+O ChatBot Omega tem como objetivo apoiar o atendimento pós-venda, facilitando a comunicação entre clientes e empresas e permitindo o encaminhamento para atendimento humano quando necessário.
+
+## 👨‍💻 Participação no projeto
+
+Este repositório é uma cópia (*fork*) do projeto original desenvolvido em equipe. A participação individual e as contribuições específicas devem ser descritas de acordo com as atividades efetivamente realizadas.
+
+## 🛠️ Tecnologias
+
+- JavaScript
+- Node.js
+- Express.js
+- PostgreSQL
+- HTML5 e CSS3
+- Docker
+
+Consulte os arquivos do projeto para obter detalhes sobre configuração e execução.
 DB_USER= xxxxx
 DB_PASSWORD= xxxxx
 DB_NAME= xxxxxx
